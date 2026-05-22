@@ -6,124 +6,597 @@
 <title>UR-DIGITAL — Premium Digital Products</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#fff}
-nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-bottom:1px solid #1e1e2e;position:sticky;top:0;background:#0a0a0fdd;backdrop-filter:blur(10px);z-index:10}
-.logo{font-size:20px;font-weight:600;letter-spacing:3px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#fff;min-height:100vh}
+input,select,textarea,button{font-family:inherit}
+a{text-decoration:none}
+
+/* NAV */
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid #1e1e2e;position:sticky;top:0;background:#0a0a0fdd;backdrop-filter:blur(10px);z-index:100}
+.logo{font-weight:700;font-size:18px;letter-spacing:3px;color:#fff}
 .logo span{color:#7F77DD}
-.nav-btn{background:#7F77DD;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;cursor:pointer;text-decoration:none}
-.hero{text-align:center;padding:6rem 2rem 4rem;max-width:700px;margin:0 auto}
-.badge{display:inline-block;font-size:11px;background:#1a1830;color:#9B96E8;padding:5px 16px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:1.5px;border:1px solid #2d2850}
-h1{font-size:40px;font-weight:700;line-height:1.2;margin-bottom:1rem}
-h1 span{color:#7F77DD}
-.hero p{font-size:16px;color:#888;line-height:1.7;margin-bottom:2rem}
-.btn-group{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-primary{background:#7F77DD;color:#fff;border:none;padding:13px 30px;border-radius:8px;font-size:14px;cursor:pointer;font-weight:600;text-decoration:none}
-.btn-secondary{background:transparent;color:#fff;border:1px solid #333;padding:13px 30px;border-radius:8px;font-size:14px;cursor:pointer;text-decoration:none}
-.stats{display:flex;justify-content:center;gap:3rem;padding:2.5rem;border-top:1px solid #1e1e2e;border-bottom:1px solid #1e1e2e;margin:0 2rem;flex-wrap:wrap}
-.stat-num{font-size:24px;font-weight:700}
-.stat-label{font-size:12px;color:#666;margin-top:3px}
-section{padding:4rem 2rem;max-width:1000px;margin:0 auto}
-.sec-title{font-size:22px;font-weight:600;margin-bottom:.5rem}
-.sec-sub{font-size:14px;color:#666;margin-bottom:2rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.card{background:#111118;border:1px solid #1e1e2e;border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s}
+.nav-btns{display:flex;gap:8px}
+.btn{padding:7px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:none;display:inline-block}
+.btn-purple{background:#7F77DD;color:#fff}
+.btn-dark{background:#111;border:1px solid #333;color:#fff}
+.btn-outline{background:transparent;border:1px solid #333;color:#888}
+.btn-red{background:transparent;border:1px solid #fe0979;color:#fe0979}
+.btn-full{width:100%;padding:11px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none}
+
+/* HERO */
+.hero{text-align:center;padding:5rem 1.5rem 3rem;max-width:680px;margin:0 auto}
+.badge-pill{display:inline-block;font-size:11px;background:#1a1830;color:#9B96E8;padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:1.5px;border:1px solid #2d2850}
+.hero h1{font-size:36px;font-weight:700;line-height:1.2;margin-bottom:12px}
+.hero h1 span{color:#7F77DD}
+.hero p{color:#888;font-size:15px;line-height:1.7;margin-bottom:24px}
+.btn-group{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:2.5rem;padding:2rem;border-top:1px solid #1e1e2e;border-bottom:1px solid #1e1e2e;flex-wrap:wrap}
+.stat-n{font-size:22px;font-weight:700;text-align:center}
+.stat-l{font-size:12px;color:#666;text-align:center;margin-top:2px}
+
+/* SECTION */
+.section{padding:3rem 1.5rem;max-width:1000px;margin:0 auto}
+.sec-title{font-size:20px;font-weight:700;text-align:center;margin-bottom:4px}
+.sec-sub{font-size:13px;color:#666;text-align:center;margin-bottom:1.5rem}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem}
+.filter-btn{padding:5px 14px;border-radius:20px;font-size:12px;border:1px solid #1e1e2e;background:transparent;color:#888;cursor:pointer}
+.filter-btn.active{background:#7F77DD;color:#fff;border-color:#7F77DD}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.card{background:#111118;border:1px solid #1e1e2e;border-radius:12px;overflow:hidden;position:relative;transition:border-color .2s,transform .2s;cursor:pointer}
 .card:hover{border-color:#7F77DD;transform:translateY(-2px)}
-.card-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:40px}
-.card-body{padding:14px}
-.card-cat{font-size:10px;color:#7F77DD;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
-.card-title{font-size:14px;font-weight:600;margin-bottom:5px}
-.card-desc{font-size:12px;color:#666;line-height:1.5;margin-bottom:12px}
+.card-badge{position:absolute;top:8px;left:8px;background:#fe0979;color:#fff;font-size:9px;padding:2px 7px;border-radius:10px;font-weight:700;z-index:1}
+.card-img{height:110px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.card-body{padding:12px}
+.card-cat{font-size:10px;color:#7F77DD;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.card-title{font-size:13px;font-weight:600;margin-bottom:4px}
+.card-desc{font-size:11px;color:#666;line-height:1.4;margin-bottom:10px}
 .card-footer{display:flex;align-items:center;justify-content:space-between}
-.price{font-size:16px;font-weight:700}
-.price-old{font-size:11px;color:#555;text-decoration:line-through;margin-left:5px;font-weight:400}
-.buy-btn{font-size:11px;background:#7F77DD;color:#fff;border:none;padding:6px 13px;border-radius:6px;cursor:pointer}
-.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;max-width:1000px;margin:0 auto;padding:0 2rem 4rem}
-.trust-card{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.2rem;text-align:center}
-.trust-icon{font-size:26px;margin-bottom:8px}
-.trust-title{font-size:13px;font-weight:600;margin-bottom:4px}
-.trust-text{font-size:12px;color:#666}
-.platform{display:flex;gap:10px;flex-wrap:wrap;padding:2rem;border-top:1px solid #1e1e2e;justify-content:center}
-.platform-badge{font-size:12px;padding:6px 16px;border-radius:20px;border:1px solid #1e1e2e;color:#888}
-footer{text-align:center;padding:2rem;border-top:1px solid #1e1e2e;font-size:13px;color:#555}
-footer a{color:#7F77DD;text-decoration:none}
-.terms-section{max-width:700px;margin:0 auto;padding:4rem 2rem}
-.terms-section h2{font-size:22px;margin-bottom:1rem;color:#7F77DD}
-.terms-section p{font-size:14px;color:#888;line-height:1.8;margin-bottom:1rem}
+.price{font-size:15px;font-weight:700}
+.price-old{font-size:10px;color:#555;text-decoration:line-through;margin-left:4px;font-weight:400}
+.buy-btn{font-size:11px;background:#7F77DD;color:#fff;border:none;padding:5px 11px;border-radius:6px;cursor:pointer}
+
+/* TIKTOK SECTION */
+.tiktok-box{background:#111118;border:1px solid #1e1e2e;border-radius:12px;padding:1.5rem;margin-top:1rem}
+.tiktok-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:1rem}
+.tt-card{background:#0a0a0f;border:1px solid #1e1e2e;border-radius:10px;padding:1.25rem;text-align:center}
+.tt-icon{font-size:28px;margin-bottom:8px}
+.tt-card h3{font-size:13px;font-weight:600;margin-bottom:6px}
+.tt-card p{font-size:11px;color:#666;line-height:1.5}
+.tt-link{font-size:12px;color:#7F77DD;font-weight:600;display:inline-block;margin-top:8px}
+
+/* TRUST */
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;max-width:1000px;margin:0 auto;padding:0 1.5rem 3rem}
+.trust-card{background:#111118;border:1px solid #1e1e2e;border-radius:10px;padding:1rem;text-align:center}
+
+/* FOOTER */
+.platform-bar{display:flex;gap:8px;flex-wrap:wrap;padding:1.5rem;border-top:1px solid #1e1e2e;justify-content:center;align-items:center}
+.p-badge{font-size:12px;padding:5px 14px;border-radius:20px;border:1px solid #1e1e2e;color:#888}
+footer{text-align:center;padding:1.5rem;border-top:1px solid #1e1e2e;font-size:12px;color:#555}
+footer a{color:#7F77DD}
+.secret-btn{background:transparent;border:none;color:#111;cursor:pointer;font-size:10px;margin-left:12px}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#0a0a0f}
+.login-box{background:#111118;border:1px solid #1e1e2e;border-radius:16px;padding:2.5rem 2rem;width:100%;max-width:340px;text-align:center}
+.login-box h2{font-size:18px;font-weight:700;letter-spacing:2px;margin-bottom:4px}
+.login-box p{font-size:12px;color:#666;margin-bottom:20px}
+.inp{width:100%;padding:9px 12px;border-radius:8px;border:1px solid #1e1e2e;background:#0a0a0f;color:#fff;font-size:13px;margin-bottom:10px}
+.inp.err{border-color:#fe0979}
+.err-msg{font-size:12px;color:#fe0979;margin-bottom:8px}
+
+/* ADMIN NAV */
+.admin-nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;border-bottom:1px solid #1e1e2e;background:#111118}
+.admin-tabs{display:flex;gap:2px;padding:0 1.5rem;border-bottom:1px solid #1e1e2e;overflow-x:auto}
+.admin-tab{padding:10px 14px;font-size:12px;border:none;border-bottom:2px solid transparent;background:transparent;color:#666;cursor:pointer;white-space:nowrap}
+.admin-tab.active{border-bottom-color:#7F77DD;color:#7F77DD}
+.admin-content{padding:1.5rem;max-width:900px;margin:0 auto}
+
+/* CARDS ADMIN */
+.product-row{background:#111118;border:1px solid #1e1e2e;border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.edit-box{background:#111118;border:1px solid #7F77DD;border-radius:10px;padding:1.25rem;margin-bottom:14px}
+.edit-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
+.tag{font-size:10px;padding:2px 8px;border-radius:10px;display:inline-block}
+.tag-green{background:#0f2010;color:#70E8A0}
+.tag-purple{background:#1a1830;color:#9B96E8}
+.tag-red{background:#2a1010;color:#E87070}
+
+/* CONTENT BOX */
+.content-box{background:#111118;border:1px solid #1e1e2e;border-radius:10px;padding:1.25rem;margin-bottom:12px}
+.copy-btn{font-size:11px;padding:4px 10px;border-radius:6px;border:1px solid #333;background:#111;color:#888;cursor:pointer}
+.platform-link{display:block;text-align:center;padding:10px;border-radius:8px;font-size:13px;font-weight:600;margin-top:10px}
+
+/* SCHEDULE */
+.sched-row{background:#111118;border:1px solid #1e1e2e;border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+
+@media(max-width:600px){
+  .hero h1{font-size:26px}
+  .stats{gap:1.5rem}
+  .edit-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<nav>
+<div id="app"></div>
+
+<script>
+// ─── STATE ─────────────────────────────────────────────────────
+const PASS = "urdigital2026";
+let state = {
+  view: "public", // public | login | admin
+  adminTab: "products",
+  activeCat: "All",
+  activeGenTab: "etsy",
+  tiktokUrl: "https://www.tiktok.com/@ur.digital",
+  etsyUrl: "https://www.etsy.com/shop/URDigital",
+  products: [
+    {id:1,cat:"Templates",title:"Business Proposal Kit",desc:"Professional templates for agencies & freelancers",price:19,old:34,bg:"#1a1830",icon:"🎨",badge:"",url:"https://www.etsy.com/shop/URDigital"},
+    {id:2,cat:"Courses",title:"Canva Mastery Course",desc:"Complete guide to designing with Canva like a pro",price:29,old:59,bg:"#0f1f18",icon:"📚",badge:"TikTok Viral 🔥",url:"https://www.etsy.com/shop/URDigital"},
+    {id:3,cat:"Tools",title:"Social Media Planner",desc:"60-day content calendar & strategy spreadsheet",price:12,old:24,bg:"#0f1828",icon:"🛠️",badge:"",url:"https://www.etsy.com/shop/URDigital"},
+    {id:4,cat:"Graphics",title:"Brand Identity Bundle",desc:"Logo, color palette & brand guide templates",price:24,old:45,bg:"#1f1610",icon:"🖼️",badge:"",url:"https://www.etsy.com/shop/URDigital"},
+    {id:5,cat:"E-Books",title:"Freelance Pricing Guide",desc:"How to price your work & negotiate with confidence",price:9,old:0,bg:"#1f1018",icon:"📖",badge:"",url:"https://www.etsy.com/shop/URDigital"},
+    {id:6,cat:"Notion",title:"Life Planner Dashboard",desc:"Complete Notion dashboard for productivity & goals",price:14,old:28,bg:"#1a1830",icon:"📋",badge:"Popular ⚡",url:"https://www.etsy.com/shop/URDigital"},
+  ],
+  editId: null,
+  showAdd: false,
+  newProduct: {cat:"Templates",title:"",desc:"",price:"",old:"",icon:"🎨",badge:"",url:""},
+  genIdea: "",
+  genCat: "Canva Templates",
+  genAudience: "Small Business Owners",
+  genLoading: false,
+  generated: null,
+  schedule: [],
+  pwVal: "",
+  pwErr: false,
+  copied: {},
+};
+
+function setState(patch) { Object.assign(state, patch); render(); }
+function app() { return document.getElementById("app"); }
+
+// ─── AI CALL ───────────────────────────────────────────────────
+async function callAI(prompt) {
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:1000,messages:[{role:"user",content:prompt}]})
+  });
+  const d = await res.json();
+  return d.content?.map(b=>b.text||"").join("\n")||"";
+}
+function parseJSON(t){try{return JSON.parse(t.replace(/```json|```/g,"").trim())}catch{return null}}
+
+async function generate() {
+  if(!state.genIdea.trim()||state.genLoading) return;
+  setState({genLoading:true,generated:null});
+  try {
+    const text = await callAI(`You are UR-DIGITAL's AI. Product: "${state.genIdea}", Category: ${state.genCat}, Audience: ${state.genAudience}. Return ONLY valid JSON no markdown:
+{"etsy":{"title":"","description":"","tags":[],"price":"","original_price":""},"tiktok":{"script":"","caption":"","hashtags":[]},"pinterest":[{"title":"","description":""},{"title":"","description":""},{"title":"","description":""}],"website":{"headline":"","subheadline":"","description":""}}`);
+    const json = parseJSON(text);
+    const sched = json ? [
+      {day:"Mon",time:"9:00 AM",platform:"TikTok",content:json.tiktok?.caption||"",status:"ready"},
+      {day:"Mon",time:"10:00 AM",platform:"Etsy",content:json.etsy?.title||"",status:"ready"},
+      {day:"Tue",time:"12:00 PM",platform:"Pinterest",content:json.pinterest?.[0]?.title||"",status:"scheduled"},
+      {day:"Wed",time:"6:00 PM",platform:"TikTok",content:json.tiktok?.caption||"",status:"scheduled"},
+      {day:"Thu",time:"3:00 PM",platform:"Pinterest",content:json.pinterest?.[1]?.title||"",status:"scheduled"},
+      {day:"Fri",time:"9:00 AM",platform:"TikTok",content:json.tiktok?.caption||"",status:"scheduled"},
+      {day:"Sat",time:"12:00 PM",platform:"Pinterest",content:json.pinterest?.[2]?.title||"",status:"scheduled"},
+    ] : [];
+    setState({generated:json,schedule:sched,genLoading:false});
+  } catch(e) { setState({genLoading:false}); }
+}
+
+function copyText(key, text) {
+  navigator.clipboard.writeText(text);
+  setState({copied:{...state.copied,[key]:true}});
+  setTimeout(()=>{ state.copied[key]=false; render(); },2000);
+}
+
+// ─── RENDER ────────────────────────────────────────────────────
+function render() {
+  const a = app();
+  if(state.view==="public") a.innerHTML = renderPublic();
+  else if(state.view==="login") a.innerHTML = renderLogin();
+  else a.innerHTML = renderAdmin();
+  bindEvents();
+}
+
+// ─── PUBLIC ────────────────────────────────────────────────────
+function renderPublic() {
+  const cats = ["All","Templates","Courses","Tools","Graphics","E-Books","Notion"];
+  const filtered = state.activeCat==="All" ? state.products : state.products.filter(p=>p.cat===state.activeCat);
+  return `
+<nav class="nav">
   <div class="logo">UR<span>-</span>DIGITAL</div>
-  <a href="https://www.etsy.com" target="_blank" class="nav-btn">Shop on Etsy →</a>
+  <div class="nav-btns">
+    <a href="${state.tiktokUrl}" target="_blank" class="btn btn-dark">📱 TikTok</a>
+    <a href="${state.etsyUrl}" target="_blank" class="btn btn-purple">Shop on Etsy →</a>
+  </div>
 </nav>
 
 <div class="hero">
-  <div class="badge">✦ PREMIUM DIGITAL PRODUCTS</div>
+  <div class="badge-pill">✦ PREMIUM DIGITAL ASSETS</div>
   <h1>High-Quality <span>Digital Assets</span><br>For Every Creator</h1>
-  <p>Templates, planners, brand kits, and more — crafted for professionals worldwide.</p>
+  <p>Templates, planners, brand kits & more — crafted for professionals worldwide.</p>
   <div class="btn-group">
-    <a href="https://www.etsy.com" target="_blank" class="btn-primary">Browse All Products</a>
-    <a href="#products" class="btn-secondary">See Categories</a>
+    <a href="${state.etsyUrl}" target="_blank" class="btn btn-purple" style="padding:12px 26px;font-size:14px">Browse All Products</a>
+    <a href="${state.tiktokUrl}" target="_blank" class="btn btn-outline" style="padding:12px 26px;font-size:14px">Watch on TikTok</a>
   </div>
 </div>
 
 <div class="stats">
-  <div style="text-align:center"><div class="stat-num">200+</div><div class="stat-label">Digital Products</div></div>
-  <div style="text-align:center"><div class="stat-num">4.9★</div><div class="stat-label">Avg. Rating</div></div>
-  <div style="text-align:center"><div class="stat-num">5,000+</div><div class="stat-label">Happy Customers</div></div>
-  <div style="text-align:center"><div class="stat-num">100%</div><div class="stat-label">Instant Delivery</div></div>
+  <div><div class="stat-n">50+</div><div class="stat-l">Products</div></div>
+  <div><div class="stat-n">5★</div><div class="stat-l">Rating</div></div>
+  <div><div class="stat-n">100%</div><div class="stat-l">Instant Delivery</div></div>
+  <div><div class="stat-n">24/7</div><div class="stat-l">Support</div></div>
 </div>
 
-<section id="products">
-  <div class="sec-title">Browse Products</div>
-  <div class="sec-sub">All available on Etsy — instant digital download</div>
-  <div class="grid">
-    <div class="card"><div class="card-img" style="background:#1a1830">🎨</div><div class="card-body"><div class="card-cat">Templates</div><div class="card-title">Business Proposal Kit</div><div class="card-desc">Professional templates for agencies & freelancers</div><div class="card-footer"><div class="price">$19<span class="price-old">$34</span></div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
-    <div class="card"><div class="card-img" style="background:#0f1f18">📚</div><div class="card-body"><div class="card-cat">Courses</div><div class="card-title">Canva Mastery Course</div><div class="card-desc">Complete guide to designing with Canva like a pro</div><div class="card-footer"><div class="price">$29<span class="price-old">$59</span></div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
-    <div class="card"><div class="card-img" style="background:#0f1828">🛠️</div><div class="card-body"><div class="card-cat">Tools</div><div class="card-title">Social Media Planner</div><div class="card-desc">60-day content calendar & strategy spreadsheet</div><div class="card-footer"><div class="price">$12<span class="price-old">$24</span></div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
-    <div class="card"><div class="card-img" style="background:#1f1610">🖼️</div><div class="card-body"><div class="card-cat">Graphics</div><div class="card-title">Brand Identity Bundle</div><div class="card-desc">Logo, color palette, and brand guide templates</div><div class="card-footer"><div class="price">$24<span class="price-old">$45</span></div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
-    <div class="card"><div class="card-img" style="background:#1f1018">📖</div><div class="card-body"><div class="card-cat">E-Books</div><div class="card-title">Freelance Pricing Guide</div><div class="card-desc">How to price your work and negotiate with confidence</div><div class="card-footer"><div class="price">$9</div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
-    <div class="card"><div class="card-img" style="background:#1a1830">📋</div><div class="card-body"><div class="card-cat">Notion</div><div class="card-title">Life Planner Dashboard</div><div class="card-desc">Complete Notion dashboard for productivity & goals</div><div class="card-footer"><div class="price">$14<span class="price-old">$28</span></div><a href="https://www.etsy.com" target="_blank" class="buy-btn">Buy</a></div></div></div>
+<div class="section">
+  <div class="sec-title">As Seen on TikTok</div>
+  <div class="sec-sub">Quick tutorials and digital product showcases</div>
+  <div class="tiktok-box">
+    <div class="tiktok-grid">
+      <div class="tt-card"><div class="tt-icon">🎥</div><h3>60-Day Content Plan</h3><p>Watch our guide on using the Social Media Planner.</p><a href="${state.tiktokUrl}" target="_blank" class="tt-link">Watch →</a></div>
+      <div class="tt-card"><div class="tt-icon">⚡</div><h3>Canva Tips & Tricks</h3><p>Customize our Brand Identity templates in minutes.</p><a href="${state.tiktokUrl}" target="_blank" class="tt-link">Watch →</a></div>
+      <div class="tt-card"><div class="tt-icon">🎯</div><h3>Notion Dashboard</h3><p>Full tour of our high-productivity Life Planner.</p><a href="${state.tiktokUrl}" target="_blank" class="tt-link">Watch →</a></div>
+    </div>
   </div>
-</section>
-
-<div class="trust">
-  <div class="trust-card"><div class="trust-icon">⚡</div><div class="trust-title">Instant Download</div><div class="trust-text">Get your files immediately after purchase</div></div>
-  <div class="trust-card"><div class="trust-icon">🛡️</div><div class="trust-title">Commercial License</div><div class="trust-text">Use in personal and client projects</div></div>
-  <div class="trust-card"><div class="trust-icon">🎧</div><div class="trust-title">24/7 Support</div><div class="trust-text">Friendly support always available</div></div>
-  <div class="trust-card"><div class="trust-icon">🔄</div><div class="trust-title">Free Updates</div><div class="trust-text">Lifetime access to product updates</div></div>
 </div>
 
-<div class="platform">
-  <span style="color:#666;font-size:13px;align-self:center">Available on:</span>
-  <span class="platform-badge">🛍️ Etsy</span>
+<div class="section">
+  <div class="sec-title">Browse Products</div>
+  <div class="sec-sub">Available on Etsy — instant digital download</div>
+  <div class="filters">
+    ${cats.map(c=>`<button class="filter-btn${state.activeCat===c?" active":""}" onclick="setState({activeCat:'${c}'});render()">${c}</button>`).join("")}
+  </div>
+  <div class="grid">
+    ${filtered.map(p=>`
+    <div class="card">
+      ${p.badge?`<div class="card-badge">${p.badge}</div>`:""}
+      <div class="card-img" style="background:${p.bg}">${p.icon}</div>
+      <div class="card-body">
+        <div class="card-cat">${p.cat}</div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-desc">${p.desc}</div>
+        <div class="card-footer">
+          <div class="price">$${p.price}${p.old>0?`<span class="price-old">$${p.old}</span>`:""}</div>
+          <a href="${p.url||state.etsyUrl}" target="_blank" class="buy-btn">Buy</a>
+        </div>
+      </div>
+    </div>`).join("")}
+  </div>
 </div>
 
-<!-- Terms of Service -->
-<div class="terms-section" id="terms">
-  <h2>Terms of Service</h2>
-  <p>Last updated: May 2026</p>
-  <p>By purchasing or downloading any digital product from UR-DIGITAL, you agree to the following terms. All products are for personal and commercial use only. Redistribution or resale of original files is strictly prohibited.</p>
-  <p>All sales are final. Due to the digital nature of our products, we do not offer refunds unless the file is corrupted or not as described.</p>
-  <p>UR-DIGITAL reserves the right to update these terms at any time without prior notice.</p>
+<div class="trust-grid">
+  <div class="trust-card"><div style="font-size:24px;margin-bottom:6px">⚡</div><div style="font-size:12px;font-weight:600;margin-bottom:3px">Instant Download</div><div style="font-size:11px;color:#666">Files immediately after purchase</div></div>
+  <div class="trust-card"><div style="font-size:24px;margin-bottom:6px">🛡️</div><div style="font-size:12px;font-weight:600;margin-bottom:3px">Commercial License</div><div style="font-size:11px;color:#666">Personal & client projects</div></div>
+  <div class="trust-card"><div style="font-size:24px;margin-bottom:6px">🎧</div><div style="font-size:12px;font-weight:600;margin-bottom:3px">24/7 Support</div><div style="font-size:11px;color:#666">Always available</div></div>
+  <div class="trust-card"><div style="font-size:24px;margin-bottom:6px">🔄</div><div style="font-size:12px;font-weight:600;margin-bottom:3px">Free Updates</div><div style="font-size:11px;color:#666">Lifetime access</div></div>
 </div>
 
-<!-- Privacy Policy -->
-<div class="terms-section" id="privacy">
-  <h2>Privacy Policy</h2>
-  <p>Last updated: May 2026</p>
-  <p>UR-DIGITAL does not collect any personal data directly through this website. Purchases are handled through Etsy, which has its own privacy policy.</p>
-  <p>We may use anonymous analytics to improve our website experience. No personal information is sold or shared with third parties.</p>
-  <p>For any privacy concerns, contact us through our Etsy shop.</p>
+<div class="platform-bar">
+  <span style="color:#666;font-size:13px">Available on:</span>
+  <a href="${state.etsyUrl}" target="_blank" class="p-badge">🛍️ Etsy</a>
+  <a href="${state.tiktokUrl}" target="_blank" class="p-badge">📱 TikTok</a>
+</div>
+
+<div style="max-width:700px;margin:0 auto;padding:2rem 1.5rem;border-top:1px solid #1e1e2e" id="terms">
+  <div style="font-size:18px;font-weight:600;color:#7F77DD;margin-bottom:10px">Terms of Service</div>
+  <p style="font-size:13px;color:#888;line-height:1.8">By purchasing from UR-DIGITAL, all products are for personal and commercial use only. Redistribution or resale of original files is prohibited. All sales are final.</p>
+</div>
+<div style="max-width:700px;margin:0 auto;padding:1rem 1.5rem 2rem" id="privacy">
+  <div style="font-size:18px;font-weight:600;color:#7F77DD;margin-bottom:10px">Privacy Policy</div>
+  <p style="font-size:13px;color:#888;line-height:1.8">UR-DIGITAL does not collect personal data. Purchases are handled through Etsy. No personal information is sold or shared.</p>
 </div>
 
 <footer>
-  © 2026 UR-DIGITAL · All rights reserved ·
-  <a href="#terms">Terms</a> ·
-  <a href="#privacy">Privacy</a> ·
-  <a href="https://www.etsy.com" target="_blank">Etsy Shop</a>
-</footer>
+  © 2026 UR-DIGITAL · <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="${state.etsyUrl}" target="_blank">Etsy Shop</a>
+  <button class="secret-btn" onclick="setState({view:'login'})">·</button>
+</footer>`;
+}
 
+// ─── LOGIN ─────────────────────────────────────────────────────
+function renderLogin() {
+  return `
+<div class="login-wrap">
+  <div class="login-box">
+    <h2 class="logo">UR<span>-</span>DIGITAL</h2>
+    <p>Admin Access</p>
+    <input id="pw-inp" type="password" class="inp${state.pwErr?" err":""}" placeholder="Enter password" value="${state.pwVal}">
+    ${state.pwErr?'<div class="err-msg">Incorrect password</div>':""}
+    <button class="btn-full btn-purple" id="login-btn">Login</button>
+    <button onclick="setState({view:'public',pwVal:'',pwErr:false})" style="margin-top:10px;background:transparent;border:none;color:#666;font-size:12px;cursor:pointer;width:100%">← Back to site</button>
+  </div>
+</div>`;
+}
+
+// ─── ADMIN ─────────────────────────────────────────────────────
+function renderAdmin() {
+  const tabs = [{id:"products",label:"📦 Products"},{id:"links",label:"🔗 Links"},{id:"generate",label:"✨ AI Generate"},{id:"schedule",label:"📅 Schedule"},{id:"publish",label:"🚀 Publish"}];
+  return `
+<div class="admin-nav">
+  <div><span class="logo" style="font-size:16px">UR<span>-</span>DIGITAL</span> <span class="tag tag-purple" style="margin-left:8px">Admin</span></div>
+  <button class="btn btn-outline" onclick="setState({view:'public'})">← Exit</button>
+</div>
+<div class="admin-tabs">
+  ${tabs.map(t=>`<button class="admin-tab${state.adminTab===t.id?" active":""}" onclick="setState({adminTab:'${t.id}'})">${t.label}</button>`).join("")}
+</div>
+<div class="admin-content">
+  ${state.adminTab==="products"?renderProducts():""}
+  ${state.adminTab==="links"?renderLinks():""}
+  ${state.adminTab==="generate"?renderGenerate():""}
+  ${state.adminTab==="schedule"?renderSchedule():""}
+  ${state.adminTab==="publish"?renderPublish():""}
+</div>`;
+}
+
+function renderProducts() {
+  const cats = ["Templates","Courses","Tools","Graphics","E-Books","Notion"];
+  const ep = state.editId ? state.products.find(p=>p.id===state.editId) : null;
+  return `
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+  <div style="font-size:16px;font-weight:600">Products (${state.products.length})</div>
+  <button class="btn btn-purple" onclick="setState({showAdd:!state.showAdd,editId:null})">+ Add Product</button>
+</div>
+
+${state.showAdd?`
+<div class="edit-box">
+  <div style="font-size:13px;font-weight:600;color:#7F77DD;margin-bottom:10px">New Product</div>
+  <input class="inp" id="np-title" placeholder="Title" value="${state.newProduct.title}">
+  <input class="inp" id="np-desc" placeholder="Description" value="${state.newProduct.desc}">
+  <div class="edit-grid">
+    <input class="inp" id="np-price" type="number" placeholder="Price ($)" value="${state.newProduct.price}">
+    <input class="inp" id="np-old" type="number" placeholder="Old Price ($)" value="${state.newProduct.old}">
+  </div>
+  <div class="edit-grid">
+    <input class="inp" id="np-icon" placeholder="Icon emoji" value="${state.newProduct.icon}">
+    <input class="inp" id="np-badge" placeholder="Badge (optional)" value="${state.newProduct.badge}">
+  </div>
+  <input class="inp" id="np-url" placeholder="Etsy URL" value="${state.newProduct.url}">
+  <select class="inp" id="np-cat">${cats.map(c=>`<option${state.newProduct.cat===c?" selected":""}>${c}</option>`).join("")}</select>
+  <div style="display:flex;gap:8px;margin-top:4px">
+    <button class="btn btn-purple" style="flex:1;padding:9px" id="add-btn">Add Product</button>
+    <button class="btn btn-outline" style="flex:1;padding:9px" onclick="setState({showAdd:false})">Cancel</button>
+  </div>
+</div>`:""}
+
+${ep?`
+<div class="edit-box">
+  <div style="font-size:13px;font-weight:600;color:#7F77DD;margin-bottom:10px">Edit: ${ep.title}</div>
+  <input class="inp" id="ep-title" placeholder="Title" value="${ep.title}">
+  <input class="inp" id="ep-desc" placeholder="Description" value="${ep.desc}">
+  <div class="edit-grid">
+    <input class="inp" id="ep-price" type="number" placeholder="Price" value="${ep.price}">
+    <input class="inp" id="ep-old" type="number" placeholder="Old Price" value="${ep.old}">
+  </div>
+  <input class="inp" id="ep-badge" placeholder="Badge" value="${ep.badge}">
+  <input class="inp" id="ep-url" placeholder="Etsy URL" value="${ep.url}">
+  <div style="display:flex;gap:8px;margin-top:4px">
+    <button class="btn btn-purple" style="flex:1;padding:9px" id="save-btn">Save</button>
+    <button class="btn btn-outline" style="flex:1;padding:9px" onclick="setState({editId:null})">Cancel</button>
+  </div>
+</div>`:""}
+
+${state.products.map(p=>`
+<div class="product-row">
+  <div style="font-size:22px;width:32px;text-align:center">${p.icon}</div>
+  <div style="flex:1">
+    <div style="font-size:13px;font-weight:600">${p.title}</div>
+    <div style="font-size:11px;color:#666">${p.cat} · $${p.price}</div>
+  </div>
+  ${p.badge?`<span class="tag" style="background:#2a1010;color:#fe0979;font-size:9px">${p.badge}</span>`:""}
+  <button class="btn btn-outline" style="font-size:11px;padding:5px 10px" onclick="setState({editId:${p.id},showAdd:false})">Edit</button>
+  <button class="btn btn-red" style="font-size:11px;padding:5px 10px" onclick="deleteProduct(${p.id})">Delete</button>
+</div>`).join("")}`;
+}
+
+function renderLinks() {
+  return `
+<div style="font-size:16px;font-weight:600;margin-bottom:16px">Platform Links</div>
+<div class="content-box">
+  <div style="font-size:13px;color:#9B96E8;font-weight:600;margin-bottom:8px">📱 TikTok URL</div>
+  <input class="inp" id="tt-url" value="${state.tiktokUrl}" placeholder="https://tiktok.com/@yourhandle">
+</div>
+<div class="content-box">
+  <div style="font-size:13px;color:#70E8A0;font-weight:600;margin-bottom:8px">🛍️ Etsy Shop URL</div>
+  <input class="inp" id="etsy-url" value="${state.etsyUrl}" placeholder="https://etsy.com/shop/yourshop">
+</div>
+<button class="btn btn-purple" style="padding:10px 24px" id="save-links-btn">Save Links</button>
+<div style="font-size:12px;color:#666;margin-top:10px">✓ Changes apply instantly to the public site</div>`;
+}
+
+function renderGenerate() {
+  const genCats = ["Canva Templates","Notion Templates","PDF Planners","Excel / Sheets","Brand Kits","E-Books"];
+  const audiences = ["Small Business Owners","Freelancers","Students","Content Creators","Entrepreneurs"];
+  const g = state.generated;
+  const tabs = [["etsy","🛍️ Etsy"],["tiktok","📱 TikTok"],["pinterest","📌 Pinterest"],["website","🌐 Website"]];
+  return `
+<div style="font-size:16px;font-weight:600;margin-bottom:16px">AI Content Generator</div>
+<div class="content-box">
+  <textarea id="gen-idea" rows="3" class="inp" placeholder="Product idea (e.g. Monthly Budget Tracker for Freelancers)..." style="resize:vertical;margin-bottom:10px">${state.genIdea}</textarea>
+  <div class="edit-grid" style="margin-bottom:12px">
+    <select class="inp" id="gen-cat">${genCats.map(c=>`<option${state.genCat===c?" selected":""}>${c}</option>`).join("")}</select>
+    <select class="inp" id="gen-aud">${audiences.map(a=>`<option${state.genAudience===a?" selected":""}>${a}</option>`).join("")}</select>
+  </div>
+  <button class="btn-full" id="gen-btn" style="background:${state.genLoading||!state.genIdea.trim()?"#1a1830":"#7F77DD"};color:${state.genLoading||!state.genIdea.trim()?"#555":"#fff"};border:none;border-radius:8px">
+    ${state.genLoading?"⏳ Generating...":"✨ Generate All Content"}
+  </button>
+</div>
+
+${g?`
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+  ${tabs.map(([id,label])=>`<button class="btn${state.activeGenTab===id?" btn-purple":" btn-outline"}" onclick="setState({activeGenTab:'${id}'})">${label}</button>`).join("")}
+</div>
+<div class="content-box">
+  ${state.activeGenTab==="etsy"?`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:#70E8A0">Etsy Listing</span>
+      <button class="copy-btn" onclick="copyText('etsy','${encodeText(g.etsy?.title+"\n\n"+g.etsy?.description+"\n\nTags: "+g.etsy?.tags?.join(", "))}')">${state.copied.etsy?"✓ Copied":"Copy"}</button>
+    </div>
+    <div style="font-size:11px;color:#666;margin-bottom:3px">Title</div>
+    <div style="font-size:13px;font-weight:600;margin-bottom:10px">${g.etsy?.title||""}</div>
+    <div style="font-size:11px;color:#666;margin-bottom:6px">Tags</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px">${(g.etsy?.tags||[]).map(t=>`<span class="tag tag-green">${t}</span>`).join("")}</div>
+    <div style="font-size:14px;font-weight:700;color:#7F77DD">${g.etsy?.price||""} <span style="text-decoration:line-through;color:#555;font-size:11px">${g.etsy?.original_price||""}</span></div>
+  `:""}
+  ${state.activeGenTab==="tiktok"?`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:#9B96E8">TikTok Content</span>
+      <button class="copy-btn" onclick="copyText('tiktok','${encodeText((g.tiktok?.script||"")+"\n\n"+(g.tiktok?.caption||"")+"\n"+(g.tiktok?.hashtags||[]).join(" "))}')">${state.copied.tiktok?"✓ Copied":"Copy"}</button>
+    </div>
+    <div style="font-size:12px;background:#1a1830;border-radius:8px;padding:10px 12px;color:#ccc;line-height:1.7;white-space:pre-wrap;margin-bottom:10px">${g.tiktok?.script||""}</div>
+    <div style="font-size:12px;color:#ccc;margin-bottom:4px">${g.tiktok?.caption||""}</div>
+    <div style="font-size:12px;color:#9B96E8">${(g.tiktok?.hashtags||[]).join(" ")}</div>
+  `:""}
+  ${state.activeGenTab==="pinterest"?`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:#E87070">Pinterest Pins</span>
+      <button class="copy-btn" onclick="copyText('pins','${encodeText((g.pinterest||[]).map((p,i)=>"Pin "+(i+1)+":\n"+p.title+"\n"+p.description).join("\n\n"))}')">${state.copied.pins?"✓ Copied":"Copy"}</button>
+    </div>
+    ${(g.pinterest||[]).map((p,i)=>`<div style="border-left:2px solid #E87070;padding-left:10px;margin-bottom:12px"><div style="font-size:12px;font-weight:600;color:#E87070;margin-bottom:4px">Pin ${i+1}: ${p.title}</div><div style="font-size:12px;color:#888;line-height:1.5">${p.description}</div></div>`).join("")}
+  `:""}
+  ${state.activeGenTab==="website"?`
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <span style="font-size:13px;font-weight:600;color:#7F77DD">Website Copy</span>
+      <button class="copy-btn" onclick="copyText('web','${encodeText((g.website?.headline||"")+"\n"+(g.website?.subheadline||"")+"\n"+(g.website?.description||""))}')">${state.copied.web?"✓ Copied":"Copy"}</button>
+    </div>
+    <div style="font-size:20px;font-weight:700;margin-bottom:6px">${g.website?.headline||""}</div>
+    <div style="font-size:14px;color:#7F77DD;margin-bottom:8px">${g.website?.subheadline||""}</div>
+    <div style="font-size:13px;color:#888;line-height:1.6">${g.website?.description||""}</div>
+  `:""}
+</div>`:""}`;
+}
+
+function renderSchedule() {
+  const pBg = {TikTok:"#1a1830",Pinterest:"#2a1010",Etsy:"#0f2010"};
+  const pTx = {TikTok:"#9B96E8",Pinterest:"#E87070",Etsy:"#70E8A0"};
+  if(!state.schedule.length) return `<div style="text-align:center;padding:3rem;color:#555;border:1px dashed #1e1e2e;border-radius:10px">Generate a product first to build your schedule</div>`;
+  return `
+<div style="font-size:16px;font-weight:600;margin-bottom:16px">Weekly Schedule</div>
+${state.schedule.map(s=>`
+<div class="sched-row">
+  <div style="min-width:32px;font-size:12px;font-weight:600;color:#666">${s.day}</div>
+  <div style="min-width:64px;font-size:11px;color:#555">${s.time}</div>
+  <span style="font-size:11px;padding:2px 10px;border-radius:10px;background:${pBg[s.platform]};color:${pTx[s.platform]};min-width:64px;text-align:center">${s.platform}</span>
+  <div style="flex:1;font-size:12px;color:#ccc;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.content}</div>
+  <span style="font-size:10px;padding:2px 8px;border-radius:8px;background:${s.status==="ready"?"#0f2010":"#1a1a1a"};color:${s.status==="ready"?"#70E8A0":"#555"}">${s.status}</span>
+</div>`).join("")}`;
+}
+
+function renderPublish() {
+  const g = state.generated;
+  if(!g) return `<div style="text-align:center;padding:3rem;color:#555;border:1px dashed #1e1e2e;border-radius:10px">Generate content first from AI Generate tab</div>`;
+  return `
+<div style="font-size:16px;font-weight:600;margin-bottom:16px">Publish Content</div>
+<div class="content-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span style="font-size:13px;font-weight:600;color:#9B96E8">📱 TikTok Script</span>
+    <button class="copy-btn" onclick="copyText('pub-tt','${encodeText((g.tiktok?.script||"")+"\n\n"+(g.tiktok?.caption||"")+"\n"+(g.tiktok?.hashtags||[]).join(" "))}')">${state.copied["pub-tt"]?"✓ Copied":"Copy All"}</button>
+  </div>
+  <div style="font-size:12px;color:#ccc;line-height:1.7;white-space:pre-wrap;background:#1a1830;padding:10px;border-radius:8px;margin-bottom:8px">${g.tiktok?.script||""}</div>
+  <div style="font-size:12px;color:#ccc">${g.tiktok?.caption||""}</div>
+  <div style="font-size:12px;color:#9B96E8;margin-top:4px">${(g.tiktok?.hashtags||[]).join(" ")}</div>
+  <a href="https://www.tiktok.com/upload" target="_blank" class="platform-link" style="background:#1a1830;color:#9B96E8">Open TikTok to Post →</a>
+</div>
+<div class="content-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span style="font-size:13px;font-weight:600;color:#E87070">📌 Pinterest Pins</span>
+    <button class="copy-btn" onclick="copyText('pub-pin','${encodeText((g.pinterest||[]).map((p,i)=>"Pin "+(i+1)+":\n"+p.title+"\n"+p.description).join("\n\n"))}')">${state.copied["pub-pin"]?"✓ Copied":"Copy All"}</button>
+  </div>
+  ${(g.pinterest||[]).map((p,i)=>`<div style="border-left:2px solid #E87070;padding-left:8px;margin-bottom:8px"><div style="font-size:12px;font-weight:600;color:#E87070">Pin ${i+1}: ${p.title}</div></div>`).join("")}
+  <a href="https://www.pinterest.com/pin-creation-tool/" target="_blank" class="platform-link" style="background:#2a1010;color:#E87070">Open Pinterest to Post →</a>
+</div>
+<div class="content-box">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <span style="font-size:13px;font-weight:600;color:#70E8A0">🛍️ Etsy Listing</span>
+    <button class="copy-btn" onclick="copyText('pub-etsy','${encodeText((g.etsy?.title||"")+"\n\n"+(g.etsy?.description||"")+"\n\nTags: "+(g.etsy?.tags||[]).join(", "))}')">${state.copied["pub-etsy"]?"✓ Copied":"Copy All"}</button>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px">${g.etsy?.title||""}</div>
+  <div style="display:flex;flex-wrap:wrap;gap:4px">${(g.etsy?.tags||[]).map(t=>`<span class="tag tag-green">${t}</span>`).join("")}</div>
+  <a href="https://www.etsy.com/sell" target="_blank" class="platform-link" style="background:#0f2010;color:#70E8A0">Open Etsy to List →</a>
+</div>`;
+}
+
+function encodeText(t) { return (t||"").replace(/'/g,"&#39;").replace(/\n/g,"\\n"); }
+
+function deleteProduct(id) { setState({products:state.products.filter(p=>p.id!==id),editId:null}); }
+
+// ─── BIND EVENTS ───────────────────────────────────────────────
+function bindEvents() {
+  // Login
+  const pw = document.getElementById("pw-inp");
+  const loginBtn = document.getElementById("login-btn");
+  if(pw) pw.addEventListener("keydown", e=>{ if(e.key==="Enter") doLogin(); });
+  if(loginBtn) loginBtn.addEventListener("click", doLogin);
+
+  // Generate
+  const genBtn = document.getElementById("gen-btn");
+  const genIdea = document.getElementById("gen-idea");
+  const genCat = document.getElementById("gen-cat");
+  const genAud = document.getElementById("gen-aud");
+  if(genIdea) genIdea.addEventListener("input", e=>{ state.genIdea=e.target.value; });
+  if(genCat) genCat.addEventListener("change", e=>{ state.genCat=e.target.value; });
+  if(genAud) genAud.addEventListener("change", e=>{ state.genAudience=e.target.value; });
+  if(genBtn) genBtn.addEventListener("click", generate);
+
+  // Save links
+  const saveLinks = document.getElementById("save-links-btn");
+  const ttUrl = document.getElementById("tt-url");
+  const etsyUrl = document.getElementById("etsy-url");
+  if(saveLinks) saveLinks.addEventListener("click", ()=>{
+    setState({tiktokUrl:ttUrl?.value||state.tiktokUrl, etsyUrl:etsyUrl?.value||state.etsyUrl});
+  });
+
+  // Add product
+  const addBtn = document.getElementById("add-btn");
+  if(addBtn) addBtn.addEventListener("click", ()=>{
+    const t=document.getElementById("np-title")?.value||"";
+    if(!t) return;
+    const np = {
+      id:Date.now(),
+      title:t,
+      desc:document.getElementById("np-desc")?.value||"",
+      price:+(document.getElementById("np-price")?.value||0),
+      old:+(document.getElementById("np-old")?.value||0),
+      icon:document.getElementById("np-icon")?.value||"🎨",
+      badge:document.getElementById("np-badge")?.value||"",
+      url:document.getElementById("np-url")?.value||state.etsyUrl,
+      cat:document.getElementById("np-cat")?.value||"Templates",
+      bg:"#1a1830",
+    };
+    setState({products:[...state.products,np],showAdd:false,newProduct:{cat:"Templates",title:"",desc:"",price:"",old:"",icon:"🎨",badge:"",url:""}});
+  });
+
+  // Save edit
+  const saveBtn = document.getElementById("save-btn");
+  if(saveBtn) saveBtn.addEventListener("click", ()=>{
+    const id = state.editId;
+    if(!id) return;
+    setState({products:state.products.map(p=>p.id!==id?p:{
+      ...p,
+      title:document.getElementById("ep-title")?.value||p.title,
+      desc:document.getElementById("ep-desc")?.value||p.desc,
+      price:+(document.getElementById("ep-price")?.value||p.price),
+      old:+(document.getElementById("ep-old")?.value||p.old),
+      badge:document.getElementById("ep-badge")?.value||"",
+      url:document.getElementById("ep-url")?.value||p.url,
+    }),editId:null});
+  });
+}
+
+function doLogin() {
+  const pw = document.getElementById("pw-inp")?.value||"";
+  if(pw===PASS) setState({view:"admin",pwVal:"",pwErr:false});
+  else { setState({pwErr:true,pwVal:pw}); setTimeout(()=>setState({pwErr:false}),2000); }
+}
+
+// ─── START ─────────────────────────────────────────────────────
+render();
+</script>
 </body>
-</html>
+  </html>
