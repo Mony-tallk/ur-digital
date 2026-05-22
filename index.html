@@ -296,7 +296,8 @@ function renderPublic() {
 
 <footer>
   © 2026 UR-DIGITAL · <a href="#terms">Terms</a> · <a href="#privacy">Privacy</a> · <a href="${state.etsyUrl}" target="_blank">Etsy Shop</a>
-  <button class="secret-btn" onclick="setState({view:'login'})">·</button>
+  <br><br>
+  <button onclick="setState({view:'login'})" style="background:#1a1830;border:1px solid #2d2850;color:#9B96E8;padding:8px 20px;border-radius:8px;font-size:12px;cursor:pointer;font-weight:600">🔐 Admin Login</button>
 </footer>`;
 }
 
@@ -599,4 +600,4 @@ function doLogin() {
 render();
 </script>
 </body>
-  </html>
+</html>
